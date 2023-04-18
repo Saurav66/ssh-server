@@ -1,0 +1,34 @@
+name: "SSH Command"
+description: "Run commands on a remote server via ssh"
+
+inputs:
+  host:
+    description: "hostname / IP of the server"
+    required: true
+  port:
+    description: "ssh port of the server"
+    required: false
+    default: "22"
+  user:
+    description: "user of the server"
+    required: true
+  private_key:
+    description: "private ssh key registered on the server"
+    required: false
+  password:
+    description: "password of server for authencation"
+    required: false
+  command:
+    description: "command to be executed"
+    required: false
+
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  env:
+    HOST: ${{ inputs.host }}
+    PORT: ${{ inputs.port }}
+    USER: ${{ inputs.user }}
+    PRIVATE_KEY: ${{ inputs.private_key }}
+    PASSWORD: ${{ inputs.password }}
+    COMMAND: ${{ inputs.command }}
