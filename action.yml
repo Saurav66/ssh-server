@@ -12,12 +12,9 @@ inputs:
   user:
     description: "user of the server"
     required: true
-  private_key:
-    description: "private ssh key registered on the server"
-    required: false
   password:
     description: "password of server for authencation"
-    required: false
+    required: true
   command:
     description: "command to be executed"
     required: false
