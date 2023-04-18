@@ -18,14 +18,17 @@ inputs:
   command:
     description: "command to be executed"
     required: false
+  host_fingerprint:
+    description: "Fingerprint of the server, preventing man-in-the-middle attacks"
+    required: false
 
 runs:
   using: "docker"
   image: "Dockerfile"
   env:
     HOST: ${{ inputs.host }}
+    HOST_FINGERPRINT: ${{ inputs.host_fingerprint }}
     PORT: ${{ inputs.port }}
     USER: ${{ inputs.user }}
-    PRIVATE_KEY: ${{ inputs.private_key }}
     PASSWORD: ${{ inputs.password }}
     COMMAND: ${{ inputs.command }}
